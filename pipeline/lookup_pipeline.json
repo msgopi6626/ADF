@@ -61,7 +61,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "@{'SalesLT'}.@{'customer'}"
+								},
+								{
+									"name": "Destination",
+									"value": "landing/product_files/saleslt.product.csv"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
