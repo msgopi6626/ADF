@@ -46,11 +46,11 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema": {
+							"schema_na_me": {
 								"value": "@pipeline().globalParameters.globalschemaname",
 								"type": "Expression"
 							},
-							"table": "salesorderdetail"
+							"table_na_me": "salesorderdetail"
 						}
 					}
 				],
