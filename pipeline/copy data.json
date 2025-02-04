@@ -48,8 +48,8 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema": "SalesLT",
-							"table": "address"
+							"schema_name": "SalesLT",
+							"table_name": "address"
 						}
 					}
 				],
@@ -118,8 +118,8 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema": "SalesLT",
-							"table": "customer"
+							"schema_name": "SalesLT",
+							"table_name": "customer"
 						}
 					}
 				],

@@ -25,8 +25,8 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema": "SalesLT",
-							"table": "product"
+							"schema_name": "SalesLT",
+							"table_name": "product"
 						}
 					}
 				}
@@ -94,8 +94,8 @@
 									"referenceName": "genericdb",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema": "SalesLT",
-										"table": "customer"
+										"schema_name": "SalesLT",
+										"table_name": "customer"
 									}
 								}
 							],
@@ -159,8 +159,8 @@
 									"referenceName": "genericdb",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema": "SalesLT",
-										"table": "product"
+										"schema_name": "SalesLT",
+										"table_name": "product"
 									}
 								}
 							],
