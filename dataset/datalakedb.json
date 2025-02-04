@@ -1,0 +1,17 @@
+{
+	"name": "datalakedb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "hospitalDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SalesLT",
+			"table": "Product"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

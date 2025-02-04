@@ -1,0 +1,42 @@
+{
+	"name": "dataflow_aggregate",
+	"properties": {
+		"activities": [
+			{
+				"name": "productdataflow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "joins_data_flow",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"aggregatelistprice": {
+								"folder_path": "product_data_flow_aggregate"
+							},
+							"joindata": {
+								"folder_path": "product_join_data"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-03T10:00:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

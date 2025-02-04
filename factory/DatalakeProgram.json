@@ -1,0 +1,17 @@
+{
+	"name": "DatalakeProgram",
+	"properties": {
+		"globalParameters": {
+			"globalschemaname": {
+				"type": "string",
+				"value": "saleslt"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "07fa58e3-b5b5-4a95-9ea9-41e00653d2e5",
+		"tenantId": "aee8a8f7-d803-4da3-abcb-8fd410176173"
+	}
+}

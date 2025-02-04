@@ -1,0 +1,31 @@
+{
+	"name": "storage_event_trigger",
+	"properties": {
+		"description": "create storage event trigger",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "for_each",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "copy data",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/landing/blobs/customer",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/239c4413-5af0-40b6-8e8d-000f0a771310/resourceGroups/sivaazure/providers/Microsoft.Storage/storageAccounts/hospitalstorage25",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

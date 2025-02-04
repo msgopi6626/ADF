@@ -1,0 +1,27 @@
+{
+	"name": "tumbling_trigger",
+	"properties": {
+		"description": "create tumbling trigger",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "getmetadata",
+				"type": "PipelineReference"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Minute",
+			"interval": 5,
+			"startTime": "2025-01-30T16:13:00Z",
+			"delay": "00:00:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"count": 2,
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}

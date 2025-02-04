@@ -1,0 +1,222 @@
+{
+	"name": "getmetadata",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata values db",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "start time",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "genericdb",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "SalesLT",
+							"table": "Address"
+						}
+					},
+					"fieldList": [
+						"columnCount",
+						"exists",
+						"structure"
+					]
+				}
+			},
+			{
+				"name": "Get Metadata values in storage",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata values db",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "datalakestorage",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder_path": "productmodel"
+						}
+					},
+					"fieldList": [
+						"childItems",
+						"exists",
+						"itemName",
+						"itemType",
+						"lastModified"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"modifiedDatetimeStart": "2025-01-27T00:00:00Z",
+						"modifiedDatetimeEnd": "2025-01-31T00:00:00Z",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "start time",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "start time",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "copy add columns",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "end time variable",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"additionalColumns": [
+							{
+								"name": "starttimestamp",
+								"value": {
+									"value": "@variables('start time')",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "endtimestamp",
+								"value": {
+									"value": "@variables('end time')",
+									"type": "Expression"
+								}
+							}
+						],
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "genericdb",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "SalesLT",
+							"table": "address"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "datalakestorage",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder_path": "add_columns_data"
+						}
+					}
+				]
+			},
+			{
+				"name": "end time variable",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata values in storage",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "end time",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"start time": {
+				"type": "String"
+			},
+			"end time": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-01-29T05:28:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
