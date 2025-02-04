@@ -19,8 +19,8 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema_name": "salesLT",
-							"table_name": "customer"
+							"schema_na_me": "salesLT",
+							"table_na_me": "customer"
 						}
 					},
 					"fieldList": [
@@ -90,8 +90,8 @@
 									"referenceName": "genericdb",
 									"type": "DatasetReference",
 									"parameters": {
-										"schema_name": "SalesLT",
-										"table_name": {
+										"schema_na_me": "SalesLT",
+										"table_na_me": {
 											"value": "@pipeline().parameters.TableEntity",
 											"type": "Expression"
 										}

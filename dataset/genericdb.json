@@ -6,10 +6,10 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"schema_name": {
+			"schema_na_me": {
 				"type": "string"
 			},
-			"table_name": {
+			"table_na_me": {
 				"type": "string"
 			}
 		},
@@ -18,11 +18,11 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": {
-				"value": "@dataset().schema_name",
+				"value": "@dataset().schema_na_me",
 				"type": "Expression"
 			},
 			"table": {
-				"value": "@dataset().table_name",
+				"value": "@dataset().table_na_me",
 				"type": "Expression"
 			}
 		}

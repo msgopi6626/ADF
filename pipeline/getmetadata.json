@@ -26,8 +26,8 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema_name": "SalesLT",
-							"table_name": "Address"
+							"schema_na_me": "SalesLT",
+							"table_na_me": "Address"
 						}
 					},
 					"fieldList": [
@@ -167,8 +167,8 @@
 						"referenceName": "genericdb",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema_name": "SalesLT",
-							"table_name": "address"
+							"schema_na_me": "SalesLT",
+							"table_na_me": "address"
 						}
 					}
 				],
