@@ -1,0 +1,21 @@
+{
+	"name": "AzureSqlDatabase1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "hospitaldatabasse.database.windows.net",
+			"database": "hospitaldatabase",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "siva",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDM1OEMwRkQ5LTc2MUUtNEMyRC1BNDdELUMxNjhENDdCQzE4OF9hYjY4MDM5My1lZmZjLTRjM2ItOWEzNy1hODZjNGJhNDRhMWMiDQp9"
+		},
+		"connectVia": {
+			"referenceName": "azureir",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

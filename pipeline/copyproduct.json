@@ -1,0 +1,128 @@
+{
+	"name": "copyproduct",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy product",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "joins_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "saleslt",
+							"table_name": "product"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "datalakestorage",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder_path": "product_files"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy product category",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "joins_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "saleslt",
+							"table_name": "productcategory"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "datalakestorage",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder_path": "product_files"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-03T09:40:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
