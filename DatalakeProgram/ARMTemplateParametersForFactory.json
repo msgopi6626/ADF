@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DatalakeProgram"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"hospitalDatabase1_password": {
+			"value": ""
+		},
+		"product_data_lake_connectionString": {
+			"value": ""
+		},
+		"storage_dataset_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://hospitalstorage25.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "hospitaldatabasse.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "hospitaldatabase"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "siva"
+		},
+		"RestApiService_properties_typeProperties_url": {
+			"value": "https://restcountries.com/v3.1/all"
+		},
+		"hospitalDatabase1_properties_typeProperties_server": {
+			"value": "hospitaldatabasse.database.windows.net"
+		},
+		"hospitalDatabase1_properties_typeProperties_database": {
+			"value": "hospitaldatabase"
+		},
+		"hospitalDatabase1_properties_typeProperties_userName": {
+			"value": "siva"
+		},
+		"storage_dataset_properties_typeProperties_url": {
+			"value": "https://hospitalstorage25.dfs.core.windows.net/"
+		},
+		"storage_event_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/239c4413-5af0-40b6-8e8d-000f0a771310/resourceGroups/sivaazure/providers/Microsoft.Storage/storageAccounts/hospitalstorage25"
+		}
+	}
+}

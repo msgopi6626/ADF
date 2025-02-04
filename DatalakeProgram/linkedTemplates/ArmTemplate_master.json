@@ -1,0 +1,167 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DatalakeProgram"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"hospitalDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'hospitalDatabase1'"
+		},
+		"product_data_lake_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'product_data_lake'"
+		},
+		"storage_dataset_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'storage_dataset'"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://hospitalstorage25.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "hospitaldatabasse.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "hospitaldatabase"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "siva"
+		},
+		"RestApiService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://restcountries.com/v3.1/all"
+		},
+		"hospitalDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "hospitaldatabasse.database.windows.net"
+		},
+		"hospitalDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "hospitaldatabase"
+		},
+		"hospitalDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "siva"
+		},
+		"storage_dataset_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://hospitalstorage25.dfs.core.windows.net/"
+		},
+		"storage_event_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/239c4413-5af0-40b6-8e8d-000f0a771310/resourceGroups/sivaazure/providers/Microsoft.Storage/storageAccounts/hospitalstorage25"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DatalakeProgram_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
+					"hospitalDatabase1_password": {
+						"value": "[parameters('hospitalDatabase1_password')]"
+					},
+					"product_data_lake_connectionString": {
+						"value": "[parameters('product_data_lake_connectionString')]"
+					},
+					"storage_dataset_accountKey": {
+						"value": "[parameters('storage_dataset_accountKey')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"RestApiService_properties_typeProperties_url": {
+						"value": "[parameters('RestApiService_properties_typeProperties_url')]"
+					},
+					"hospitalDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('hospitalDatabase1_properties_typeProperties_server')]"
+					},
+					"hospitalDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('hospitalDatabase1_properties_typeProperties_database')]"
+					},
+					"hospitalDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('hospitalDatabase1_properties_typeProperties_userName')]"
+					},
+					"storage_dataset_properties_typeProperties_url": {
+						"value": "[parameters('storage_dataset_properties_typeProperties_url')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DatalakeProgram_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"storage_event_trigger_properties_typeProperties_scope": {
+						"value": "[parameters('storage_event_trigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DatalakeProgram_ArmTemplate_0')]"
+			]
+		}
+	]
+}
