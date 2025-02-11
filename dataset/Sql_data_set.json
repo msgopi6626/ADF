@@ -39,6 +39,16 @@
 				"precision": 23,
 				"scale": 3
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema_name",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
 	}
 }
